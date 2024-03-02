@@ -28,11 +28,10 @@ addToDoButton.addEventListener("click", (event) => {
 
 todosContainer.addEventListener("click", (event) => {
     let key = event.target.dataset.key;
-    todoList = todoList.map(todo => todo.id === key ? { ...todo, isCompleted: !todo.isCompleted } : todo)
-    event.stopPropagation();
-    // alert(todoList)
-    console.log(event.target.dataset.key)
+    todoList = todoList.map((todo) => todo.id === key ? { ...todo, isCompleted: !todo.isCompleted } : todo)
+    console.log(event.target)
     console.log(todoList)
+    
 })
 
 
@@ -40,24 +39,9 @@ function renderTodoList(todoList) {
     todosContainer.innerHTML = todoList.map(({ id, todo, isCompleted }) => 
 `<div class="item-container">
     <div class="wrapper">
-        <input type="checkbox" data-key=${id} name=${todo} id=${todo}>
-        <label for=${todo} data-key=${id}>${todo}</label>    
+        <input type="checkbox" data-key=${id} name=${todo} id=${id}>
+        <label for=${id} data-key=${id}>${todo}</label>    
     </div>
     <img src="./trash.svg" alt="delete button">
 </div>`).join('')
 }
-
-
-// console.log(todoList.map((todo) => `
-// <div class="item-container">
-// <div class="wrapper">
-// <input type="checkbox" name=${todo.todo} id=${todo.todo}>
-// <label for=${todo.todo}>${todo.todo}</label>
-// </div>
-// <img src="./trash.svg" alt="delete button">
-// </div>`))
-
-// console.log(todosContainer.innerHTML)
-
-// let str = ["A", "B", "C"];
-// console.log(str.join('-'))
